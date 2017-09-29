@@ -33,7 +33,7 @@
       </ul>
 -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="//localhost/pustaka"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="//localhost/pustakaw/"><i class="fa fa-home"></i> Dashboard</a></li>
 <!--
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">List<span class="caret"></span></a>
