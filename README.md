@@ -6,7 +6,7 @@ Sistem ini dibuat menggunakan bahasa PHP - mysqli dan PDO dua-duanya dipakai.
 
 Tema menggunakan [Gentelella](https://github.com/puikinsh/gentelella)
 
-### Figure `
+### Figure 1
 Dashboard Sistem
 
 
