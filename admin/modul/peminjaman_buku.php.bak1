@@ -1,0 +1,32 @@
+<div class="col-md-3"></div>
+<div class="col-md-6">
+   <form method="post" action="">
+        <div class="input-group">
+            <input type="text" class="form-control input-lg" placeholder="Input Kode Anggota" name="search">
+            <div class="input-group-btn">
+                <button class="btn btn-primary btn-lg" name="exec" type="submit">pilih</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-md-3"></div>
+<div class="col-md-12">
+    <?php
+    if(isset($_POST['exec']) AND ($_POST['search'])!= NULL){
+        $valuepost = $_POST['search'];
+        $q = $dbase->query("SELECT * FROM anggota WHERE kodeanggota LIKE '%".$valuepost."%'");
+        $h = $q->fetch(PDO::FETCH_ASSOC);
+        while (count($h)!=null) {
+            
+        }
+    }else{
+        echo '
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="alert alert-danger">Kode tidak diinput / Anggota tidak ditemukan</div>
+        </div>
+        <div class="col-sm-3"></div>
+        ';
+    }
+    ?>
+</div>
