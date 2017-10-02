@@ -1,8 +1,10 @@
-## Nama TA ku 2c6f74db05e1c1871f2ca6729352c5cf
+## ID:2c6f74db05e1c1871f2ca6729352c5cf
 
-Sistem ini dibuat menggunakan bahasa PHP - mysqli dan PDO dua-duanya dipakai.
+Aplikasi ini dibuat menggunakan bahasa PHP - database menggunakan mysql (mysqli dan PDO) dua-duanya dipakai.
 
-@2017 . https://immsswd.github.com
+gaya coding <em>(Level mahasiswa, not too pro)</em>
+
+© 2017 . [Imam S](https://immsswd.github.io)
 
 Tema menggunakan [Gentelella](https://github.com/puikinsh/gentelella)
 
