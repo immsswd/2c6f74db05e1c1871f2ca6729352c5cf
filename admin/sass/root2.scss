@@ -1,0 +1,18 @@
+@import 'node_modules/bootstrap/sass/bootstrap';
+@import 'normalize';
+@import 'templatemo-style';
+@import 'vendor/components/font-awesome/scss/font-awesome';
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: arial;
+}
+
+#imgroot2 {
+    width: 40%;
+}

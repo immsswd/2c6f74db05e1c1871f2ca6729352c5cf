@@ -3,9 +3,9 @@
 class Database
 {
     public $isConnected;
-    protected $db;
+    protected $dbase;
 
-    public function __construct($username="root", $password="", $host="localhost", $dbname="db_lib")
+    public function __construct($username="id3287805_root", $password="dbpuswil", $host="localhost", $dbname="id3287805_db_lib")
     {
     	$this->isConnected = true;
         try {

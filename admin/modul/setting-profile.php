@@ -17,11 +17,11 @@ $h = mysqli_fetch_all($q, MYSQLI_ASSOC);
             <?php foreach ($h as $row): ?>
             <div class="form-group">
                 <label for="nip">NIP/NIK:</label>
-                <input type="text" name="nip" class="form-control" value="<?php echo $row["nip"]?>" required>
+                <input type="text" name="nip" class="form-control" value="<?php echo $row["nip"]?>" disabled>
             </div>
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $row["username"]?>" required>
+                <input type="text" name="username" class="form-control" value="<?php echo $row["username"]?>" disabled>
             </div>
             <div class="form-group">
                 <label for="firstname">Nama Awal:</label>

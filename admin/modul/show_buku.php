@@ -55,8 +55,8 @@
         <div class="panel-body">
             <h5>
                 <ul>
-                    <li>Jumlah Katalog:    <span><?=$numrows?></span></li><br>
-                    <li>Jumlah Detail Katalog:    <span><?=$number_of_rows?></span></li>
+                    <li class="label label-primary">Jumlah Katalog:    <span><?=$numrows?></span></li>
+                    <li class="label label-success">Jumlah Detail Katalog:    <span><?=$number_of_rows?></span></li>
                 </ul>
             </h5>
         </div>
@@ -75,7 +75,7 @@ if (isset($_POST['pilihcategory'])) {
     <thead>
         <tr>
         <th>#</th>
-        <th>Kode Buku</th>
+        <th>Kode Buku/ISBN</th>
         <th>Judul</th>
         <th>Pengarang</th>
         <th>Tahun terbit</th>
@@ -92,6 +92,7 @@ if (isset($_POST['pilihcategory'])) {
     <?php 
     while ($rw = $getbukukat->fetch(PDO::FETCH_OBJ)) {   
     ?>
+    
         <tr>
             <td><?=$no?></td>
             <td><?=$rw->kode?></td>
@@ -112,10 +113,11 @@ if (isset($_POST['pilihcategory'])) {
                 <a><img data-targetsize="0.45" data-duration="600" class="img-responsive zoomTarget" width="80" height="100" src="<?=$rw->fotobuku?>"></a>
             </td>
         </tr>
+         
     <?php
         $no++;
      }  ?>
-    </tbody>
+   </tbody>
 </table>
 <?php
 } //isset btn kategori
@@ -148,7 +150,7 @@ $no = 1;
     <thead>
         <tr>
             <th>#</th>
-            <th>Kode Buku</th>
+            <th>Kode Buku/ISBN</th>
             <th>Judul</th>
             <th>Pengarang</th>
             <th>Tahun terbit</th>

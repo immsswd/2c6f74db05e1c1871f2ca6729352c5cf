@@ -1,7 +1,14 @@
+/*
+mixed by imamsiswandi
+immsswd.github.io
+*/
+
 @import 'node_modules/bootstrap/sass/bootstrap';
 //@import 'datatables.bootstrap';
-//@import 'responsive.bootstrap';
-@import './vendor/components/font-awesome/scss/font-awesome.scss';
+// @import 'bootswatch';
+// @import 'variables';
+@import 'responsive.bootstrap';
+@import 'vendor/components/font-awesome/scss/font-awesome';
 @import 'nprogress';
 @import 'sweetalert2';
 *,
@@ -22,6 +29,30 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+.btn-app{
+    border-radius: 5px default;
+}
+//.left_col, .sidebar-footer, .scroll-view{
+//    background: #1f2a36 !important;
+//}
+.login_content{
+    width: 89% !important;
+}
+.alert-danger{
+    border-left: 6px solid #f44336 !important;
+}
+.alert-warning{
+    border-left: 6px solid rgb(196, 128, 25) !important;
+}
+.alert-success{
+    border-left: 6px solid #4CAF50 !important;
+}
+.alert-info{
+    border-left: 6px solid #2196F3 !important;
+}
+.alert-primary{
+    border-left: 6px solid #2196F3 !important;
 }
 //card
 #card {

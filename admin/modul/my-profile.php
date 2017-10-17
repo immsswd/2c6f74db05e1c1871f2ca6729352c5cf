@@ -18,6 +18,6 @@ while ($fe = $s->fetch(PDO::FETCH_OBJ)) {
   <p>NIP/NIK: <?=$nip?></p>
   <a href="#"><i class="fa fa-twitter"></i></a> 
   <a href="#"><i class="fa fa-facebook"></i></a> 
-  <p><button>Contact: <?=$contact?></button></p>
+  <p><button>Kontak/WA: <?=$contact?></button></p>
 </div>
 </div>

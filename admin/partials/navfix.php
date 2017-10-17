@@ -1,4 +1,6 @@
-
+<?php
+define('_BASEAPP_', "https://imamta.000webhostapp.com/");
+?>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,12 +30,12 @@
             <li><a href="#">Separated link</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
-          </ul>
+          </ul>d
         </li>
       </ul>
 -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="//localhost/pustakaw/"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="<?=_BASEAPP_?>"><i class="fa fa-home"></i> Dashboard</a></li>
 <!--
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">List<span class="caret"></span></a>

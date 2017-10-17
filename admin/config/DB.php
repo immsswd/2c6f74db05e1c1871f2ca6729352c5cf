@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$dbname = "db_lib";
-$username = "root";
-$password = "";
+$dbname = "id3287805_db_lib";
+$username = "id3287805_root";
+$password = "dbpuswil";
 try {
         $dbase = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
         $dbase->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

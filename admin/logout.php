@@ -1,5 +1,8 @@
+<?php session_start();?>
 <?php
-session_start();
+define('_IMGSRC_', "https://imamta.000webhostapp.com/");
 session_destroy();
-header("location://localhost/pustakaw/");
 ?>
+<script>
+	window.location="<?=_IMGSRC_?>";
+</script>

@@ -40,7 +40,11 @@ include_once("fctn/tglid.php");
 	<tr>
 		<?php if ($status){?>
 		<td><?=$no?></td>
-		<td><img src="<?=$row->foto?>" alt="<?=$row->nama?>" width="100" heigth="80" class="img-responsive img-thumbnail"></td>
+		<td>
+			<a target="_blank" href="<?=$row->foto?>">
+			<img src="<?=$row->foto?>" alt="<?=$row->nama?>" width="100" heigth="80" class="img-responsive img-thumbnail">
+			</a>
+		</td>
         <td><?=$row->kodeanggota?></td>
         <td><?=$row->nama?></td>
         <td><?=$row->statuspekerjaan?></td>

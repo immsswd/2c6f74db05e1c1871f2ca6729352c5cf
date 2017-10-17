@@ -12,4 +12,6 @@
     <link rel="stylesheet" href="build/css/dataTables.bootstrap.min.css">
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-  </head>
+
+    <link rel="shortcut icon" href="public/images/pku.jpg" />
+</head>

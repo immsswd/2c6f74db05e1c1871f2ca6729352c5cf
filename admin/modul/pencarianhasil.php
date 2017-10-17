@@ -65,11 +65,14 @@ while($row = mysqli_fetch_array($result))
 //table background color = row_color variable
 ?>
 <div class="col-md-12">
+   
 <div class="panel panel-default">
-<div class="panel-heading"><h4><i class='fa fa-external-link'></i> Judul: <a href='#'> <?=$row['judul']?></a></h4></div>
+    
+<div class="panel-heading"><h4> Judul: <a href='#' class="text-info"> <?=$row['judul']?></a></h4></div>
 <div class="panel-body">
 <div class="">
 <div class="result">
+    <tbody>
     <div id="zoomTarget">
     <img data-targetsize="0.45" data-duration="600" class="img-responsive zoomTarget" src="<?=$row['fotobuku'] ?>" alt="<?=$row['judul'] ?>" width="80" height="100">
     <em class="text-danger">Kilk gambar (zoom)</em>
@@ -81,9 +84,11 @@ while($row = mysqli_fetch_array($result))
         <strong><h4 class="text-danger">Stok buku: <?= $row['stokbuku']?></h4></strong>
         <strong><h4 class="text-success">Stok yang tersedia: <?= $row['jml_stok_sekarang']?></h4></strong>
     </p>
+    </tbody>
 </div><hr>  
 </div>
 </div>
+
 </div>
 </div>
 

@@ -1,9 +1,10 @@
-<?php
-session_start();
+<?php session_start()?>
+<?php;
 include "config/dbold.php";
 include "config/DB.php";
+date_default_timezone_set('Asia/Jakarta');
 if (empty($_SESSION['member'])){
-    header("location:login.php");
+    header("location:login-member.php");
 }else{
 ?>
 <!DOCTYPE html>
@@ -14,10 +15,10 @@ include 'partials/head.php'
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-book"></i> <span>Pustaka Wilayah</span></a>
+              <a href="index.php" class="site_title"><i class="glyphicon glyphicon-home"></i> <span>Pustaka Wilayah</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -28,7 +29,6 @@ include 'partials/head.php'
             <?php
               $que = $dbase->query("SELECT * FROM anggota WHERE usernamea = '$_SESSION[member]'");
               $h = $que->fetchAll();
-              // var_dump($h);
               foreach ($h as $va) {
                 $foto = $va['foto'];
                 $nama = $va['nama'];
@@ -39,7 +39,7 @@ include 'partials/head.php'
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo ucwords($nama) ?></h2>
+                <h2><a href="index.php?modul=profile" class="label label-default"><?php echo ucwords($nama) ?></a></h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -56,16 +56,16 @@ include 'partials/head.php'
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-co" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-fullscree" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              <a data-toggle="tooltip" data-placement="top" title="Lihat Pesan" href="index.php?modul=pesan">
+                <span class="fa fa-envelope" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout.php">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-off text-warning" aria-hidden="true"></span>
               </a>
             </div>
             <!-- /menu footer buttons -->
@@ -81,7 +81,11 @@ include 'partials/head.php'
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Halaman Anggota</h3>
+                <h3>
+                    <span class="label label-success">
+                        Halaman Anggota
+                    </span>
+                </h3>
               </div>
 
       <!--     search input    <div class="title_right">
@@ -140,11 +144,13 @@ include 'partials/head.php'
                                    include "modul/show_buku.php";
                                 }elseif ($_GET['modul']=='profile'){
                                    include "modul/profile.php";
-                                }
-                                else{
+                                }elseif ($_GET['modul']=='pesan'){
+                                   include "modul/pesanpustaka.php";
+                                }else{
                                     //jika tidak ada lagi parameter lain
                                     echo 'Halaman Tidak Ditemukan <br>
                                     <center class="text-danger">404</center>';
+                                    session_destroy();
                                 }
                             }
                      ?>
@@ -157,7 +163,19 @@ include 'partials/head.php'
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
+        <footer class="footer_fixed">
+            <div class="text-justify">
+            <div class="pull-right">
+              <i class="fa fa-copyright"></i> <?=date("Y")?> <em>Perpustakaan Soeman HS | v1.0 <a target="_blank" href="https://github.com/immsswd"><span class="fa fa-github"></span> GitHub</a></em> &mdash; <small><em>
+                  Jl. Jenderal Sudirman No 462, Sukajadi Pekanbaru, Riau
+              </em></small>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
  <?php include 'partials/footer.php' ?>
   </body>
 </html>

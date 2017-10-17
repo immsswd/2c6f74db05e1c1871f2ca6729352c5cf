@@ -1,9 +1,9 @@
 <div class="col-md-12">
-	<h2>Histori Peminjaman</h2>
+	<h2>Histori Pengembalian koleksi buku</h2><hr>
 	<?php
 	include ("pages/fungsitgl.php");
 	// var_dump($_SESSION['kodeanggota']);
-	$sql = $dbase->query("SELECT * FROM peminjaman WHERE kodeanggota = '$_SESSION[kodeanggota]' AND status_peminjaman = 'Sudah Kembali'");
+	$sql = $dbase->query("SELECT * FROM peminjaman WHERE kodeanggota = '$_SESSION[kodeanggota]' AND status_peminjaman = 'Belum Kembali'");
 		$no = 1;
 	?>
 	<table class="table table-hover table-bordered table-striped">

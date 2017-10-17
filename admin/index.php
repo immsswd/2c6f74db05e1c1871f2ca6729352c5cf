@@ -1,27 +1,29 @@
+<?php session_start();?>
 <?php
-session_start();
 include "config/dbold.php";
 include "config/DB.php";
-if (empty($_SESSION['staffadmin'])){
-    header("location:login.php");
+date_default_timezone_set('Asia/Jakarta');
+define('_IMGSRC_', "https://imamta.000webhostapp.com/");
+
+if (!isset($_SESSION['staffadmin'])){
+    // header("location:login.php");
+    echo '<script>
+    window.location="login.php";
+        </script>';
 }else{
-    $sql = "SELECT * FROM admin_reg";
-    $h = mysqli_query($link, $sql);
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+    <html lang="id">
     <!--immsswd.github.io-->
-    <?php 
-include 'partials/head.php';
-?>
+    <?php include 'partials/head.php';?>
 
     <body class="nav-md">
         <div class="container body">
             <div class="main_container">
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
-                            <a href="index.php" class="site_title"><i class="glyphicon glyphicon-book"></i> <span>Pustaka Wilayah</span></a>
+                        <div class="navbar nav_title" style="border: 0;" data-placement="right" data-toggle="tooltip" data-original-title="Kembali ke HOME">
+                            <a href="index.php" class="site_title"><i class="glyphicon glyphicon-home"></i> <span>Pustaka Wilayah</span></a>
                         </div>
 
                         <div class="clearfix"></div>
@@ -29,11 +31,13 @@ include 'partials/head.php';
                         <!-- menu profile quick info -->
                         <?php include "partials/menu-profile.php" ?>
                         <!-- /menu profile quick info -->
-                        <br>
                         <!-- sidebar menu -->
-                        <?php
+                        <div class="menu_fixed">
+                            <?php
 //                            $sql = "SELECT * FROM admin_reg";
 //                            $h = mysqli_query($link, $sql);
+                        $sql = "SELECT * FROM admin_reg";
+                        $h = mysqli_query($link, $sql);
                         while($row = mysqli_fetch_array($h)){
                             if($_SESSION['staffadmin']==$row['username'] && $row['jabatan']=='Staff Registrasi'){
                                 include 'partials/sidebar-reg.php';     
@@ -48,11 +52,12 @@ include 'partials/head.php';
                             }
                         }
                         ?>
+                        </div>
                         <!-- /sidebar menu -->
 
                         <!-- /menu footer buttons -->
                         <div class="sidebar-footer hidden-small">
-                          <!--   <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <!--   <a data-toggle="tooltip" data-placement="top" title="Settings">
                                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                             </a>
                             <a data-toggle="tooltip" data-placement="top" title="FullScreen">
@@ -61,14 +66,14 @@ include 'partials/head.php';
                             <a data-toggle="tooltip" data-placement="top" title="Lock">
                                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                             </a> -->
-                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="">
-                                <span class="glyphicon glyphicon-of" aria-hidden="false"></span>
+                            <a>
+                                <span class="glyphicon glyphicon" aria-hidden="false"></span>
                             </a>
-                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="">
-                                <span class="glyphicon glyphicon-of" aria-hidden="false"></span>
+                            <a>
+                                <span class="glyphicon glyphicon" aria-hidden="false"></span>
                             </a>
-                            <a id="goFS" data-toggle="tooltip" data-placement="top" title="FullScreen">
-                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            <a href="index.php?modul=kirimpesan" data-toggle="tooltip" data-placement="top" title="Kirim Pesan">
+                                <span class="fa fa-envelope" aria-hidden="true"></span>
                             </a>
                             <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout.php">
                                 <span class="text-danger glyphicon glyphicon-off" aria-hidden="false"></span>
@@ -88,18 +93,17 @@ include 'partials/head.php';
 
                         <div class="page-title">
                             <div class="title_left">
-                                <h3> Halaman
-                                <?php
+                                <h3>
+                                    <?php
                                     foreach($h as $ro){
                                         if($_SESSION['staffadmin']==$ro['username']){
-                                            echo $ro['jabatan'];
+                                            echo '<span class="label label-danger"> Halaman '.$ro["jabatan"].'</span>';
                                         }
                                     }
                                 ?>
                                 </h3>
                             </div>
-
-<!--
+                            <!--
                             <div class="title_right">
                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                     <div class="input-group">
@@ -110,7 +114,7 @@ include 'partials/head.php';
                                     </div>
                                 </div>
                             </div>
--->                     
+                        -->
                         </div>
                         <div class="clearfix"></div>
                         <div class="row">
@@ -119,7 +123,9 @@ include 'partials/head.php';
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                     <div class="x_title">
-                                        <h2></h2>
+                                        <h2>
+                                            <!-- judul content -->
+                                        </h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                             </li>
@@ -139,110 +145,93 @@ include 'partials/head.php';
                                     </div>
                                     <div class="x_content">
 
-                     <?php
-                    // $sq = "SELECT jabatan FROM admin_reg";
-                    // $hg = mysqli_query($link, $sq);
-                    //     while($r = mysqli_fetch_array($hg));
-
-                    // $sq = $dbase->query("SELECT jabatan FROM admin_reg");
-                    // $rs = $sq->fetchAll(PDO::FETCH_ASSOC);
-          
-                     if (isset($_GET['modul'] )AND ($_SESSION['staffadmin'])) {
+                                        <?php
+                    // -----------------roles-------------------------//
+                     if (isset($_GET['pages']) AND (isset($_SESSION['staffadmin']))){
+                         if ($_GET['pages']=='ubahdataanggota') {
+                             include "pages/ubahdataanggota.php";
+                         }elseif($_GET['pages']=='deletereg'){
+                             include "pages/deletereganggota.php";
+                         }elseif($_GET['pages']=='useradminprofile'){
+                             include "pages/viewuseradmin.php";
+                         }elseif($_GET['pages']=='ubahdataadmin'){
+                             include "pages/ubahdataadmin.php";
+                         }elseif ($_GET['pages']=='delmsg') {
+                             include "pages/delmsg.php";
+                         }
+                         else{
+                            echo '<p class="text-danger">Halaman tidak ditemukan 404</p>';
+                            session_destroy();
+                         }
+                     }
+                    //----------------------URI Param----------------------//
+                     if (isset($_GET['modul'] )AND (isset($_SESSION['staffadmin']))){
 
                                 if ($_GET['modul']=='modul_calon_user') {
                                     include "modul/show_calon_users.php";
                                 }elseif ($_GET['modul']=='home') {
                                     include "modul/cari_buku.php";
-                                }
-                                elseif ($_GET['modul']=='modul_user') {
+                                }elseif ($_GET['modul']=='modul_user') {
                                     include "modul/show_users.php";
-                                }
-                                elseif ($_GET['modul']=='modul_users') {
+                                }elseif ($_GET['modul']=='modul_users') {
                                     include "modul/show_users_sk.php";
-                                }
-                                elseif ($_GET['modul']=='adminprofile') {
+                                }elseif ($_GET['modul']=='kirimpesan') {
+                                    include "modul/pesand.php";
+                                }elseif ($_GET['modul']=='adminprofile') {
                                     include "modul/adminprofile.php";
-                                }
-                                elseif ($_GET['modul']=='edituser') {
+                                }elseif ($_GET['modul']=='edituser') {
                                     include "modul/edituser.php";
-                                }
-                                elseif ($_GET['modul']=='tambah_buku') {
+                                }elseif ($_GET['modul']=='tambah_buku') {
                                      include "modul/tambah_buku.php";   
-                                }
-                                elseif ($_GET['modul']=='kategori_buku'){
+                                }elseif ($_GET['modul']=='kategori_buku'){
                                     include "modul/kategori_buku.php";
-                                }
-                                elseif ($_GET['modul']=='show_buku'){
+                                }elseif ($_GET['modul']=='booksdetailwithuser'){
+                                    include "modul/detailuserbuku.php";
+                                }elseif ($_GET['modul']=='detailbu'){
+                                    include "modul/detailuserbook.php";
+                                }elseif ($_GET['modul']=='show_buku'){
                                     include "modul/show_buku.php";
-                                }
-                                elseif ($_GET['modul']=='cari_buku'){
+                                }elseif ($_GET['modul']=='cari_buku'){
                                     include "modul/cari_buku.php";
-                                
                                 }elseif ($_GET['modul']=='help'){
-
                                     include "modul/help.php";
-                                }
-                                elseif ($_GET['modul']=='hasilpencarian'){
+                                }elseif ($_GET['modul']=='booksdetailwithuser'){
+                                    include "modul/detailuserbuku.php";
+                                }elseif ($_GET['modul']=='hasilpencarian'){
                                     include "modul/pencarianhasil.php";
-                                }
-                                elseif ($_GET['modul']=='all_user'){
-                                    
+                                }elseif ($_GET['modul']=='all_user'){
                                     include "modul/all_user.php";
-                                }
-                                elseif ($_GET['modul']=='all_admin'){
-
+                                }elseif ($_GET['modul']=='forum'){
+                                    include "modul/forumadmin.php";
+                                }elseif ($_GET['modul']=='all_admin'){
                                     include "modul/all_admin.php";
-
                                 }elseif ($_GET['modul']=='setting'){
-
                                     include "modul/setting-profile.php";
-
-                                }
-                                elseif ($_GET['modul']=='my-profile'){
-
+                                }elseif ($_GET['modul']=='my-profile'){
                                     include "modul/my-profile.php";
-
-                                }
-                                elseif ($_GET['modul']=='peminjaman'){
-
+                                }elseif ($_GET['modul']=='peminjaman'){
                                     include "modul/peminjaman_buku.php";
-
                                 }elseif ($_GET['modul']=='datapeminjaman'){
-
                                     include "modul/data_peminjaman.php";
-
                                 }elseif ($_GET['modul']=='pengembalian'){
-
-                                    include "modul/pengembalian_buku.php";
-                                
+                                    include "modul/pengembalian_buku.php";                                
                                 }elseif ($_GET['modul']=='datapengembalian'){
-
                                     include "modul/data_pengembalian.php";
-
                                 }elseif ($_GET['modul']=='laporanpeminjaman'){
-
                                     include "modul/laporanpeminjaman.php";
-
-                                }
-                                elseif ($_GET['modul']=='laporanpengembalian'){
-
+                                }elseif ($_GET['modul']=='laporanpengembalian'){
                                     include "modul/laporanpengembalian.php";
-
-                                }
-                                elseif ($_GET['modul']=='laporanregistrasi'){
-
+                                }elseif ($_GET['modul']=='laporanregistrasi'){
                                     include "modul/laporanregistrasi.php";
-
-                                }
-                                elseif ($_GET['modul']=='perpanjang'){
-
-                                    include "modul/perpanjang.php";
-
-                                }
-                                else{
+                                }elseif ($_GET['modul']=='logatt'){
+                                    include "modul/logatt.php";
+                                }elseif ($_GET['modul']== 'edit'){
+                                    include "modul/edit.php";
+                                }else{
                                     //jika tidak ada lagi parameter lain
-                                    echo 'Halaman Tidak Ditemukan <br>
+                                    echo 'Halaman Tidak Ditemukan
                                     <center class="text-danger">404</center>';
+                                    session_destroy();
                                 }
                             }
                      ?>
@@ -257,27 +246,31 @@ include 'partials/head.php';
                 <!-- /page content -->
 
                 <!-- footer content -->
-                <footer>
-                 <div class="text-justify">
-            <div class="pull-right">
-              <i class="fa fa-copyright"></i> <?=date("Y")?> <em>Perpustakaan Soeman HS | v1.0 <a target="_blank" href="https://github.com/immsswd"><span class="fa fa-github"></span> GitHub</a></em> &mdash; <small><em>
+                <footer class="footer_fixed">
+                    <div class="text-justify">
+                        <div class="pull-right">
+                            <i class="fa fa-copyright"></i>
+                            <?=date("Y")?> <em>Perpustakaan Soeman HS | v1.0 <a target="_blank" href="https://github.com/immsswd"><span class="fa fa-github"></span> <u>GitHub</u></a></em> &mdash; <small><em>
                   Jl. Jenderal Sudirman No 462, Sukajadi Pekanbaru, Riau
               </em></small>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
             </div>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
-    </div>
-    <?php include 'partials/footer.php' ;?>
-    <script>
-        $(function() {
-           $( ".datepicker" ).datepicker({
-            dateFormat: 'yy-mm-dd'
-           });
-       });
-    </script>
+        </div>
+        <?php include 'partials/footer.php' ;?>
+        <script>
+            $(function() {
+                $(".datepicker").datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+            });
+
+        </script>
     </body>
+
     </html>
-    <?php }?>
+
+    <?php } //endelse ?>

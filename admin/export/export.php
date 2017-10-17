@@ -32,7 +32,7 @@ while($row = $result->fetch(PDO::FETCH_OBJ))
     $column_kontak = $column_kontak.$kontak."\n";
     $column_status = $column_status.$status."\n";
 //Create a new PDF file
-$pdf = new FPDF('P','mm',array(210,297)); //L For Landscape / P For Portrait
+$pdf = new FPDF('L','mm',array(210,297)); //L For Landscape / P For Portrait
 $pdf->AddPage();
 //Menambahkan Gambar
 $pdf->Image('../public/images/pku-logo.gif',15,10,10);

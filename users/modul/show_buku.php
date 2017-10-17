@@ -1,5 +1,4 @@
 <div class="col-md-4">
-<!--    <h2 class="text-center">Lihat berdasarakan kategori: </h2><hr>-->
     <div class="panel panel-default">
     <div class="panel-heading">Pilih berdasarakan kategori:</div>
         <div class="panel-body">
@@ -55,8 +54,8 @@
         <div class="panel-body">
             <h5>
                 <ul>
-                    <li>Jumlah Katalog:    <span><?=$numrows?></span></li><br>
-                    <li>Jumlah Detail Katalog:    <span><?=$number_of_rows?></span></li>
+                    <li class="label label-success">Jumlah Katalog:    <span><?=$numrows?></span></li>
+                    <li class="label label-primary">Jumlah Detail Katalog:    <span><?=$number_of_rows?></span></li>
                 </ul>
             </h5>
         </div>
@@ -115,7 +114,7 @@ if (isset($_POST['pilihcategory'])) {
     <?php
         $no++;
      }  ?>
-    </tbody>
+     </tbody>
 </table>
 <?php
 } //isset btn kategori
@@ -127,19 +126,7 @@ if (isset($_POST['pilihcategory'])) {
 <?php
 if (isset($_POST['lihatsemuabuku'])) {
     ?>
-<!-- <h2 class=" text-center"><i class="fa fa-paperclip"></i> Katalog Buku Perpustakaan Soeman HS</h2><hr> -->
 <?php
-//define('PU', '//localhost/pustaka/imgbooks/');
-//print_r(PU);
-//define('ROOTT', $_SERVER['SERVER_NAME'].'/pustaka/');
-//echo ROOTT;
-//echo __DIR__."./gambar/";
-
-//define('ROOTT', "//".$_SERVER['SERVER_NAME'].'/pustaka/users/');
-//echo ROOTT;
-
-//var_dump($_SESSION['staffadmin']);
-
 $hasil = mysqli_query($link, "SELECT * FROM buku ORDER BY tahunterbit DESC");
 $no = 1;
 ?>
@@ -162,8 +149,7 @@ $no = 1;
         </tr>
     </thead>
     <tbody>
-
-<?php while ($row = mysqli_fetch_array($hasil)){ ?>
+    <?php while ($row = mysqli_fetch_array($hasil)){ ?>
         <tr>
         <td><?php echo $no; ?></td>
         <td><?php echo $row["kode"]?></td>
@@ -184,12 +170,11 @@ $no = 1;
             ?></p></td>
         <td><a><img data-targetsize="0.45" data-duration="600" class="img-responsive zoomTarget" width="80" height="100" src="<?php echo $row["fotobuku"] ?>"></a>
         </td>
-        </tr>
-        <?php $no++;  }  ?>
+        </tr>        
+    <?php $no++;  }  ?>
     </tbody>
 </table>
 <?php
 }
-
 ?>
 </div>

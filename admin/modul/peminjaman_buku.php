@@ -1,8 +1,6 @@
-<div class="col-md-12">
-    <h2 class="text-center"><i class="fa fa-paperclip"></i> Peminjaman</h2><hr>
-</div>
 <div class="col-md-3"></div>
 <div class="col-md-6">
+<p class="text-center text-info lead"><i class="fa fa-paperclip"></i> Peminjaman buku</p><hr>
 
    <form method="post" action="">
         <div class="input-group">
@@ -10,18 +8,17 @@
             <?php
                 // $s1= mysqli_query($link, "SELECT * FROM user_reg INNER JOIN anggota ON user_reg.id = anggota.iduser ORDER BY user_reg.updated DESC");
                 // $s = mysqli_query($link, "SELECT * FROM anggota WHERE status_keanggotaan = 'Aktif'");
-            $s = mysqli_query($link, "SELECT * FROM anggota WHERE status_keanggotaan = 'Aktif'");
+//            $s = mysqli_query($link, "SELECT * FROM anggota WHERE status_keanggotaan = 'Aktif' ORDER BY kodeanggota ASC");
+            $s = $dbase->query("SELECT * FROM anggota WHERE status_keanggotaan = 'Aktif' ORDER BY kodeanggota");
 
             ?>
             <select name="kodang" class="form-control input-lg selectpicker">
-            <?php
-                while($row = mysqli_fetch_array($s)){
-            ?>
-                <option value="<?=$row['kodeanggota']?>"><?php echo $row['kodeanggota'] ?></option>
+            <?php while($row = $s->fetch(PDO::FETCH_ASSOC)){ ?>
+                <option value="<?=$row['kodeanggota']?>"><?php echo $row['kodeanggota']." - ".$row['nama']?></option>
             <?php }?>
             </select>
             <div class="input-group-btn">
-                <button class="btn btn-primary btn-lg" name="exec" type="submit">Pilih No Anggota</button>
+                <button class="btn btn-primary btn-lg" name="exec" type="submit">Pilih Anggota</button>
             </div>
         </div>
     </form>
@@ -29,8 +26,6 @@
 <div class="col-md-3"></div>
 <div class="col-md-12">
     <?php
-    // $judul = ['$judul1','$judul2'];
-    // var_dump(array($judul));
     if(isset($_POST['exec'])){
         // var_dump($_SESSION['staffadmin']);
         $kodang = $_POST['kodang'];
@@ -39,8 +34,9 @@
 
         $hs = mysqli_query($link, "SELECT * FROM buku ORDER BY judul ASC");
         $hasil = mysqli_fetch_all($hs, MYSQLI_ASSOC);
-
-
+//        $hs     = $dbase->query("SELECT * FROM anggota WHERE kodeanggota = '$kodang'");
+//        $hasil  = $hs->fetch(PDO::FETCH_ASSOC);
+        
         $qa = $dbase->query("SELECT * FROM anggota WHERE kodeanggota = '$kodang'");
         $re = $qa->fetchAll();
         foreach ($re as $hss) {
@@ -95,9 +91,10 @@
                 <label for="dateissue">Tanggal Peminjaman </label>
                 <input type="text" name="dateissue" value="<?=date('Y-m-d')?>" class="form-control" disabled>
             </div>
-            <div class="form-group">
-                <label for="dateissue">Tanggal Pengembalian (<small class="text-warning">Tahun-bulan-tanggal</small>)</label>
-                <input type="form" name="datereturn" class="form-control datepicker" required>
+            <div class="form-group has-feedback col-lg-12">
+                <label for="datereturn">Tanggal Pengembalian (<small class="text-warning">Tahun-bulan-tanggal</small>)</label>
+                <input name="datereturn" type="text" class="form-control has-feedback-left datepicker" id="inputSuccess2" placeholder="Tanggal Pengembalian" required>
+                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
             </div>
             <div class="form-group">
                 <button type="submit" name="pinjam" class="btn btn-warning btn-lg btn-block">Proses</button>
@@ -111,6 +108,8 @@
     <?php
 
         if (isset($_POST['pinjam'])){
+            
+            require_once("fctn/tglid.php");
             // $kodeanggota = htmlentities($_POST['kodeanggota']); 
             // $namaanggota = htmlentities($_POST['namaanggota']); 
             // $contact     = htmlentities($_POST['contact']);
@@ -118,8 +117,30 @@
             $judul2      = htmlentities($_POST['judul2']);
             // $dateissue   = htmlentities($_POST['dateissue']);
             $datereturn  = htmlentities($_POST['datereturn']);            
-
-            $ins = "INSERT INTO peminjaman VALUES (null, '$_SESSION[kodeanggota]', '$_SESSION[namaanggota]', '$_SESSION[kontak]', '$judul1', '$judul2', NOW(), '$datereturn','Belum Kembali', '$_SESSION[staffadmin]')";
+            $timestamp = date('Y-m-d G:i:s');
+            // tidak bisa meminjam jika anggota sudah meminjam sebelumnya
+            $stmt = $dbase->query("SELECT * FROM peminjaman WHERE kodeanggota = '$_SESSION[kodeanggota]'");
+            while($rs = $stmt->fetch(PDO::FETCH_OBJ)):
+                $statuspeminjaman = $rs->status_peminjaman;
+                $nama             = $rs->namaanggota;
+                $buku             = '<strong>'.$rs->buku1.'</strong> dan buku: <strong>'.$rs->buku2.'</strong>';
+                $tglp             = $rs->tglpeminjaman;
+                $tglpeng          = $rs->tglpengembalian;
+            endwhile;
+            if($statuspeminjaman == 'Belum Kembali'){
+        ?>
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                
+                <p><i class="fa fa-warning"></i> Maaf, Peminjaman tidak bisa dilakukan karna <?=$nama?> telah/sedang meminjam buku: <?=$buku?>
+                <br>
+                    Transaksi peminjaman pada tanggal <strong><?=TanggalIndo($tglp)?></strong> dan pengembalian pada tanggal <strong><?=TanggalIndo($tglpeng)?></strong>
+                </p>
+            </div>
+        <?php
+            }else{
+            $ins = "INSERT INTO peminjaman VALUES (null, '$_SESSION[kodeanggota]', '$_SESSION[namaanggota]', '$_SESSION[kontak]', '$judul1', '$judul2', NOW(), '$datereturn','Belum Kembali', '$_SESSION[staffadmin]', '$timestamp')";
             // mysqli_query($link, "UPDATE buku SET jml_stok_sekarang = jml_stok_sekarang-1 WHERE judul = judul2");
             mysqli_query($link, "UPDATE buku SET jml_stok_sekarang = jml_stok_sekarang - 1 WHERE judul = '$judul1'");
             mysqli_query($link, "UPDATE buku SET jml_stok_sekarang = jml_stok_sekarang - 1 WHERE judul = '$judul2'");
@@ -143,7 +164,7 @@
             </thead>
             <tbody>
         <?php 
-            require ("fctn/tglid.php");
+
             $sss = $dbase->query("SELECT * FROM peminjaman WHERE namaanggota = '$_SESSION[namaanggota]'");
             $no = 1;
             while ($roww = $sss->fetch(PDO::FETCH_OBJ)) {
@@ -174,6 +195,7 @@
                 echo '<script>alert("Cek kembali form Peminjaman")</script>';
             }
         }
+    }
     ?>
 </div>
 <script>
@@ -183,5 +205,4 @@ document.querySelector('#sweet-20'), function(){
   text: "Buku berhasil dipinjamkan",
 });
 };
-</script>
 </script>

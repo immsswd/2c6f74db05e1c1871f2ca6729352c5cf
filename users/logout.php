@@ -1,5 +1,5 @@
+<?php session_start()?>
 <?php
-session_start();
 session_destroy();
-header("location:login-member.php");
+header("location://localhost/pustaka/");
 ?>

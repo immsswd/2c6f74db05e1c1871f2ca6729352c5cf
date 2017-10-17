@@ -11,6 +11,7 @@ $rs = mysqli_query($link, $q);
 
 ?>
 
-<script type="text/javascript">
-	window.location ="../index.php?modul=modul_calon_user";
-</script>
+    <script type="text/javascript">
+        window.location = "../index.php?modul=modul_calon_user";
+
+    </script>

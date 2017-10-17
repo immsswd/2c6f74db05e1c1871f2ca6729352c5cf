@@ -1,8 +1,7 @@
-<div class="col-md-12">
-	<h2 class="text-center"><i class="fa fa-paperclip"></i> Pengembalian</h2><hr>
-</div>
 <div class="col-md-3"></div>
 <div class="col-md-6">
+<p class="text-center text-success lead"><i class="fa fa-paperclip"></i> Pengembalian buku</p><hr>
+
     <!--Input-->
   <!--   <form method="post" action="" >
         <div class="input-group">
@@ -25,11 +24,11 @@
             	<?php
                 while($row = mysqli_fetch_array($s)){
             	?>
-                <option value="<?=$row['kodeanggota']?>"><?php echo $row['kodeanggota'] ?></option>
+                <option value="<?=$row['kodeanggota']?>"><?php echo $row['kodeanggota'].' - '.$row['namaanggota'] ?></option>
             	<?php }?>
             </select>
             <div class="input-group-btn">
-                <button class="btn btn-primary btn-lg" name="carinoanggota" type="submit">Pilih</button>
+                <button class="btn btn-primary btn-lg" name="carinoanggota" type="submit">Pilih Anggota</button>
             </div>
         </div>
     </form>
@@ -40,15 +39,15 @@
 <div class="col-md-12">
 	<?php
 		if (isset($_POST['carinoanggota'])) {
+			$n  = 1;
 			$rs = $dbase->query("SELECT * FROM peminjaman WHERE kodeanggota = '$_POST[inputnoanggota]' AND status_peminjaman = 'Belum Kembali'");
 			// $rs->fetch(PDO::FETCH_OBJ);
 			// var_dump($rs);
 			?>
-			<table class="table table-responsive table-hover table-striped table-bordered">
+			<table class="table table-responsive table-hover">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>Nama Anggota</th>
+						<th>Anggota</th>
 						<th>Kode Anggota</th>
 						<th>Kontak Anggota</th>
 						<th>Buku 1</th>
@@ -69,7 +68,6 @@
 					$_SESSION['agg'] = $row->kodeanggota;
 				?>
 					<tr>
-						<td></td>
 						<td><?=$row->namaanggota?></td>
 						<td><?=$row->kodeanggota?></td>
 						<td><?=$row->kontakanggota?></td>

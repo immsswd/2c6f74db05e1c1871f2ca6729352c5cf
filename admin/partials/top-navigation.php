@@ -1,36 +1,41 @@
 <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
+            </div>
 
-              <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <?php
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <?php
                       include "config/dbOldWay.php";
                       while ($rowadmin = mysqli_fetch_array($admin))
                     {
                    ?>
-                      <img src="<?php echo $rowadmin ['profile_img']?>" alt=""><?php echo ucfirst($_SESSION["staffadmin"]); ?>
-                    <?php }?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="index.php?modul=my-profile"><i class="fa fa-user-secret"></i> Profile</a></li>
-                    <li>
-                      <a href="index.php?modul=setting">
-<!--                        <span class="badge bg-red pull-right">50%</span>-->
-                        <span><i class="fa fa-gears"></i> Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="index.php?modul=help"><i class="fa fa-question-circle-o"></i> Help</a></li>
-                    <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
+                            <img src="<?php echo $rowadmin['profile_img']?>" alt="">
+                            <?php echo ucfirst($_SESSION["staffadmin"]); ?>
+                            <?php }?>
+                            <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a href="index.php?modul=my-profile"><i class="fa fa-user-secret"></i> Profile</a></li>
+                        <li>
+                            <a href="index.php?modul=setting">
+                                <!--                        <span class="badge bg-red pull-right">50%</span>-->
+                                <span><i class="fa fa-gears"></i> Settings</span>
+                            </a>
+                        </li>
+                        <li><a href="index.php?modul=help"><i class="fa fa-question-circle-o"></i> Help</a></li>
+                        <li><a href="index.php?modul=kirimpesan"><i class="fa fa-envelope-o"></i> Kirim Pesan ke anggota</a></li>
+                        <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    </ul>
                 </li>
-
-  <!--               <li role="presentation" class="dropdown">
+                <!-- <li>
+                <a><strong>date('d/M/Y - G:i:s' )</strong></a>
+              </li> -->
+                <!--=============pesan menu notif======================-->
+                <!-- <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
                     <span class="badge bg-green">6</span>
@@ -75,7 +80,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="public/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="public/images/media.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -94,9 +99,10 @@
                       </div>
                     </li>
                   </ul>
-                </li> 
-              --><!--===================/Menu Notif=======================-->
-              </ul>
-            </nav>
-          </div>
-        </div>
+                </li> --> 
+             
+                <!--===================/Menu Notif=======================-->
+            </ul>
+        </nav>
+    </div>
+</div>

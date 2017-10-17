@@ -1,0 +1,173 @@
+<?php include 'admin/config/DB.php' ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<?php include 'partials/head.inc.php' ?>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div class="site-bg"></div>
+    <div class="site-bg-overlay"></div>
+
+    <!-- TOP HEADER -->
+    <?php include "partials/top-header.inc.php" ?>
+    <!-- .top-header -->
+
+
+    <!-- toggle menu -->
+    <?php include "partials/toggle-menu.inc.php" ?>
+
+    <div class="container" id="page-content">
+        <div class="row">
+
+
+
+            <div class="col-md-9 col-sm-12 content-holder">
+                <!-- CONTENT -->
+                <div id="menu-container">
+
+                    <div class="logo-holder logo-top-margin">
+                        <a href="#" class="site-brand"><img width="100" src="admin/public/images/pku-logo.gif" alt=""></a>
+                    </div>
+
+
+                    <div id="menu-1" class="homepage home-section text-center">
+                        <div class="welcome-text">
+                            <h2>Selamat Datang di Sistem Informasi Registrasi Anggota dan Peminjaman Koleksi Buku Perpustakaan Soeman HS</h2>
+                            <p>
+                                Registrasi Anggota? <span class="green"><a href="users/"><u>Disini</u></a></span>
+                            </p>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div id="menu-2" class="content about-section">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="box-content profile">
+                                    <h3 class="widget-title text-center">Login Area</h3><hr>
+                                    <!--Tab -->
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+
+                                                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                                    <ul id="myTab1" class="nav nav-tabs bar_tabs right" role="tablist">
+                                                        <li role="presentation" class="active"><a href="#tab_content11" id="home-tabb" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Login</a>
+                                                        </li>
+                                                        <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tabb" data-toggle="tab" aria-controls="profile" aria-expanded="false">Login Registrasi</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div id="myTabContent2" class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content11" aria-labelledby="home-tab">
+                                                            <!-- form -->
+                                                            <?php include "partials/form-anggota.php" ?>
+                                                            <!-- endform -->
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane fade" id="tab_content22" aria-labelledby="profile-tab">
+                                                            <!-- form admin -->
+                                                            <?php include "partials/form-reg.php" ?>
+                                                            <!-- endform admin -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- endtab -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="menu-3" class="content gallery-section">
+                        <div class="box-content">
+                            <h3 class="widget-title well">Preview Koleksi buku Perpustakaan</h3>
+                            <div class="row">
+                                <?php
+                                    $stmt = $dbase->query("SELECT * FROM buku LIMIT 10");
+                                ?>
+
+                                    <?php  
+                                    while($rs = $stmt->fetch(PDO::FETCH_OBJ)):
+                                ?>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="project-item">
+                                            <img id="imgroot" class="img img-responsive" width="10" height="50" src="admin/<?=$rs->fotobuku?>" alt="">
+                                            <div class="project-hover">
+                                                <h4>
+                                                    <?=$rs->judul?>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php endwhile ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="menu-4" class="content contact-section">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8">
+                                <div class="box-content">
+                                    <h3 class="widget-title">Send Us A Message</h3>
+                                    <form class="contact-form">
+                                        <fieldset>
+                                            <input type="text" class="name" id="name" placeholder="Name...">
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="email" class="email" id="email" placeholder="Email...">
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="text" class="subject" id="subject" placeholder="Subject...">
+                                        </fieldset>
+                                        <fieldset>
+                                            <textarea name="message" id="message" cols="30" rows="4" placeholder="Message.."></textarea>
+                                        </fieldset>
+                                        <fieldset>
+                                            <input type="submit" class="button" id="button" value="Send Message">
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="box-content">
+                                    <h3 class="widget-title">Stay In Touch</h3>
+                                    <p>Sed ullamcorper, risus a tincidunt efficitur, massa mauris ultricies leo, eu interdum eros erat non augue. <br><br> Suspendisse ornare sollicitudin lectus non egestas. Nam fermentum imperdiet ligula congue venenatis. </p>
+                                    <div class="about-social">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-linkedin"></a></li>
+                                            <li><a href="#" class="fa fa-dribbble"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-3 hidden-sm">
+                <?php include 'partials/nav.inc.php' ?>
+            </div>
+        </div>
+    </div>
+    <?php include 'partials/footerjs.inc.php' ?>
+</body>
+
+</html>

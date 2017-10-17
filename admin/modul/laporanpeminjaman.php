@@ -62,7 +62,7 @@
 					<th>Nama Anggota</th>
 					<th>Nomor Anggota</th>
 					<th>Peminjaman Buku 1</th>
-					<th>Peminjaman Buku 1</th>
+					<th>Peminjaman Buku 2</th>
 					<th>Tanggal Peminjaman</th>
 					<th>Tanggal Pengembalian</th>
 					<th>Status Peminjaman</th>

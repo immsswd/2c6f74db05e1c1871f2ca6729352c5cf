@@ -58,23 +58,14 @@
             <label for="nama">Nama Lengkap (<small class="text-danger">Sesuai Identitas</small>)</label>
             <input type="text" class="form-control" name="nama" placeholder="Nama lengkap sesuai Identitas" required>
         </div>
-        <div class="form-group">
+        <div class="form-group to_do">
             <label for="jeniskelamin">Jenis Kelamin</label>
-            
-            <?php
-//                $table_name     = "anggota";
-//                $column_name    = "jeniskelamin";
-//                $result = mysqli_query($link,'SHOW COLUMNS FROM '.$table_name.' WHERE field="'.$column_name.'"');
-//                    while ($row = mysqli_fetch_row($result)) {
-//                        foreach(explode("','",substr($row[1],6,-2)) as $option) {
-//                            echo("<option value='".$option."'>".$option."</option>");
-//                        }
-//                    }
-            ?>
-            <select name="jeniskelamin" class="form-control">
+            <!-- select name="jeniskelamin" class="form-control">
                 <option value="Laki-laki">Laki-laki</option>
                 <option value="Perempuan">Perempuan</option>
-            </select>
+            </select> -->
+            <p><input type="checkbox" class="flat"  value="Laki-laki" name="jeniskelamin"> Laki-laki</p>
+            <p><input type="checkbox" class="flat"  value="Perempuan" name="jeniskelamin"> Perempuan</p>
         </div>
         <div class="form-group">
             <label for="jenisanggota">Jenis Anggota</label>

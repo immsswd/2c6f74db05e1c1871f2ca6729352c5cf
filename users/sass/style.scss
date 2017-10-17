@@ -1,30 +1,40 @@
 @import 'node_modules/bootstrap/sass/bootstrap';
 @import 'vendor/fortawesome/font-awesome/scss/font-awesome';
 @import 'nprogress';
-html{
-    
-}
-*, *:before, *:after{
+
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
-body{
+
+html,
+body {
     text-shadow: none !important;
 }
+
 .easyzoom {
     float: left;
 }
+
 .easyzoom img {
     display: block;
 }
-#zoomTarget:hover{
+
+#zoomTarget:hover {
     opacity: 0.5;
 }
 
+.login_content {
+    width: 89% !important;
+}
 
 /* Shrink wrap strategy 2 */
+
 .easyzoom {
     display: inline-block;
 }
+
 .easyzoom img {
     vertical-align: bottom;
 }

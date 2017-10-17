@@ -19,10 +19,17 @@ gulp.task('root', function () {
         ).on('error', sass.logError))
    .pipe(gulp.dest('./build/css/'));
 });
+gulp.task('root2', function () {
+   return gulp.src('./sass/root2.scss')
+   .pipe(sass(
+        {outputStyle: 'compressed'}
+        ).on('error', sass.logError))
+   .pipe(gulp.dest('./public/css/'));
+});
 gulp.task('compress', function() { 
         return gulp.src('./public/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('./build/js'))
 });
 
-gulp.task('default', ['sass-u', 'root', 'compress']);
+gulp.task('default', ['sass-u', 'root', 'root2', 'compress']);

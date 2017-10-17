@@ -1,5 +1,5 @@
 <div class="col-md-12">
-	<h2>Histori Peminjaman</h2>
+	<h2>Histori Peminjaman koleksi buku</h2><hr>
 	<?php
 	include ("pages/fungsitgl.php");
 	// var_dump($_SESSION['kodeanggota']);

@@ -1,13 +1,14 @@
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section">
-        <!-- <div role="separator" class="divider"></div> -->
-        <!-- <center><h3><u>Admin Sistem</u></h3></center> -->
+<!--         <div role="separator" class="divider"></div> -->
+        <h3><u>Menu <?=$_SESSION['staffadmin']?></u></h3>
         <ul class="nav side-menu">
             <li><a href="index.php?modul=home"><i class="fa fa-home"></i> Home </a></li>
             <li><a><i class="fa fa-book"></i> Katalog Buku <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="index.php?modul=cari_buku">Cari buku</a></li>
                     <li><a href="index.php?modul=show_buku">Buku</a></li>
+                    <li><a href="index.php?modul=booksdetailwithuser">Detail Buku-Peminjaman</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-database"></i> Data Master <span class="fa fa-chevron-down"></span></a>
@@ -15,6 +16,7 @@
                     <li><a href="index.php?modul=kategori_buku">Kategori Buku</a></li>
                     <li><a href="index.php?modul=tambah_buku">Tambah Buku</a></li>
                     <li><a href="index.php?modul=all_admin">Admin Sistem</a></li>
+                    <li><a href="index.php?modul=logatt">Login Attempt</a></li>
                 </ul>
             </li>
             <li><a href="index.php?modul=all_user"><i class="fa fa-cog"></i>Kelola User</a></li>
@@ -37,11 +39,11 @@
                     <li><a href="index.php?modul=datapengembalian">Data Pengembalian</a></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-file-archive-o"></i> Laporan <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-folder-open-o"></i> Laporan <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="index.php?modul=laporanregistrasi">Laporan Registrasi Anggota</a></li>
                     <li><a href="index.php?modul=laporanpeminjaman">Laporan Peminjaman/Pengembalian Koleksi Buku</a></li>
-                 <!--    <li><a href="index.php?modul=laporanpengembalian">Laporan Pengembalian Buku</a></li> -->
+                    <!--    <li><a href="index.php?modul=laporanpengembalian">Laporan Pengembalian Buku</a></li> -->
                 </ul>
             </li>
             <!--
