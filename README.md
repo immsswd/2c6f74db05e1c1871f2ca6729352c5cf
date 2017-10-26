@@ -2,7 +2,7 @@
 
 => Sistem ini dibuat menggunakan bahasa PHP - koneksi PDO.
 
-=> blog: @2017 . https://immsswd.github.com
+=> blog: git@2017 . https://immsswd.github.com
 
 => Tema menggunakan [Gentelella](https://github.com/puikinsh/gentelella)
 
