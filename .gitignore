@@ -13,6 +13,7 @@ admin/profileimg/
 users/gambar/*
 users/profileimg/
 users/p/
+users/c/
 users/g/
 # Runtime data
 pids
