@@ -10,11 +10,12 @@ admin/gambar/*
 admin/g
 admin/c/*
 admin/config/
+admin/p/
 admin/profileimg/
 
 users/gambar/*
 users/profileimg/
-users/p/
+users/p/a
 users/config/
 users/g/
 # Runtime data
