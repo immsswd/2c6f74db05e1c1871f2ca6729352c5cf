@@ -9,12 +9,13 @@ partials/
 admin/gambar/*
 admin/g
 admin/c/*
+admin/config/
 admin/profileimg/
 
 users/gambar/*
 users/profileimg/
 users/p/
-users/c/
+users/config/
 users/g/
 # Runtime data
 pids
