@@ -1,10 +1,10 @@
 ## Nama TA ku 2c6f74db05e1c1871f2ca6729352c5cf
 
-Sistem ini dibuat menggunakan bahasa PHP - mysqli dan PDO dua-duanya dipakai.
+=> Sistem ini dibuat menggunakan bahasa PHP - koneksi PDO.
 
-@2017 . https://immsswd.github.com
+=> blog: @2017 . https://immsswd.github.com
 
-Tema menggunakan [Gentelella](https://github.com/puikinsh/gentelella)
+=> Tema menggunakan [Gentelella](https://github.com/puikinsh/gentelella)
 
 ### Figure 1
 Dashboard Sistem

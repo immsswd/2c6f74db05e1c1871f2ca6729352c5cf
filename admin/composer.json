@@ -1,0 +1,20 @@
+{
+    "name": "imamsiswandi/admin",
+    "description": "TA Project (Perpustkaan Soeman HS)",
+    "type": "library",
+    "require": {
+        "twbs/bootstrap": "v3.3.7",
+        "fortawesome/font-awesome": "^4.7",
+        "sm-alfariz/indonesian-date-format": "^1.0",
+        "phpunit/phpunit": "^5.7",
+        "mpdf/mpdf": "^6.1",
+        "itbz/fpdf": "^1.7",
+        "components/font-awesome": "^4.7"
+    },
+    "authors": [
+        {
+            "name": "imam",
+            "email": "imamsiswandi@gmail.com"
+        }
+    ]
+}
