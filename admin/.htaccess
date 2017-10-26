@@ -1,6 +1,0 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine on
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?id=$1&login=$2
-</IfModule>
