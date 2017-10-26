@@ -7,11 +7,13 @@ yarn-error.log*
 admin/dev/
 partials/
 admin/gambar/*
-admin/g/
-admin/p/
+admin/g
+admin/profileimg/
 
 users/gambar/*
 users/profileimg/
+users/p/
+users/g/
 # Runtime data
 pids
 *.pid
