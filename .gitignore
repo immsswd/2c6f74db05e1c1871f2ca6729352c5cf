@@ -8,6 +8,7 @@ admin/dev/
 partials/
 admin/gambar/*
 admin/g
+admin/c/*
 admin/profileimg/
 
 users/gambar/*
